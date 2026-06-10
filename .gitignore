@@ -1,0 +1,36 @@
+# .NET
+[Bb]in/
+[Oo]bj/
+artifacts/
+*.user
+*.suo
+*.userprefs
+.vs/
+
+# Godot
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+export_credentials.cfg
+*.translation
+*.tmp
+*.uid
+
+# Mono / Godot C# bridge output
+.mono/
+data_*/
+mono_crash.*.json
+
+# Local / backup
+*.csproj.old
+
+# Ephemeral runtime state (LSP / debug launchers)
+*.pid
+
+# Cursor plans (archived only; active plans stay tracked if added)
+.cursor/plans/.archived/
+
+# OS
+.DS_Store
+Thumbs.db

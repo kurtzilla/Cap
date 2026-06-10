@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8sandboxtestworld"]
+
+[ext_resource type="Script" path="res://Scenes/sandbox_test_world.gd" id="1_sandbox"]
+
+[node name="SandboxTestWorld" type="Node3D"]
+script = ExtResource("1_sandbox")

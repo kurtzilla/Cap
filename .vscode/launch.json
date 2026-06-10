@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Godot Game",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "",
+      "cwd": "${workspaceFolder}/src/Godot",
+      "stopAtEntry": false,
+      "console": "integratedTerminal",
+      "pipeTransport": {
+        "debuggerPath": "${extensionInstallFolder:muhammad-sammy.csharp}/.debugger/netcoredbg/netcoredbg.exe",
+        "pipeCwd": "${workspaceFolder}/src/Godot",
+        "pipeProgram": "${config:godotTools.editorPath.godot4}",
+        "pipeArgs": ["--path", "${workspaceFolder}/src/Godot"]
+      }
+    },
+    {
+      "name": "C#: Attach to Godot Game",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickProcess}"
+    }
+  ]
+}

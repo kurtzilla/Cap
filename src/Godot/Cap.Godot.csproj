@@ -1,0 +1,14 @@
+<Project Sdk="Godot.NET.Sdk/4.6.3">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <RootNamespace>Cap.Godot</RootNamespace>
+    <AssemblyName>Cap.Godot</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Cap.Core.csproj" />
+  </ItemGroup>
+
+</Project>

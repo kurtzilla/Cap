@@ -1,0 +1,15 @@
+# Hard AI block: files Cursor must not read, index, or @-mention.
+# Cursor automatically applies .gitignore — do not duplicate build/cache patterns here.
+# Scope: secrets and credential paths only (defense in depth).
+# For search-noise on tracked paths, use .cursorindexingignore.
+
+# Godot export credentials (also in .gitignore)
+export_credentials.cfg
+
+# Environment / secrets (future-proof; none in repo today)
+.env
+.env.*
+**/secrets.json
+**/*.pem
+**/*.key
+

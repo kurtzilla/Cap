@@ -1,0 +1,32 @@
+{
+  "godotTools.projectPath": "src/Godot",
+  "godotTools.editorPath.godot4": "C:\\Users\\Dev\\.gdvm\\installs\\4.6.3-stable-csharp\\Godot_v4.6.3-stable_mono_win64.exe",
+  "cap.godotProcessName": "Godot_v4.6.3-stable_mono_win64",
+  "godotTools.lsp.serverPort": 6007,
+  "godotTools.lsp.serverHost": "127.0.0.1",
+  "task.allowAutomaticTasks": "on",
+
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+
+  // FIXED: Maps *.gd files to the correct tokenizer so they instantly light up in color
+  "files.associations": {
+    "**/.godot/**/*.cfg": "plaintext",
+    "*.gd": "gdscript"
+  },
+
+  "files.exclude": {
+    "**/.godot": true
+  },
+  "[gdscript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "geequlim.godot-tools"
+  },
+  "[csharp]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "[plaintext]": {
+    "editor.formatOnSave": false
+  }
+}

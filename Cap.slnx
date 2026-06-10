@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Core/">
+    <Project Path="src/Core/Cap.Core.csproj" />
+  </Folder>
+  <Folder Name="/src/Godot/">
+    <Project Path="src/Godot/Cap.Godot.csproj" />
+  </Folder>
+</Solution>

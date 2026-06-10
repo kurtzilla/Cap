@@ -1,0 +1,13 @@
+# Index-only exclusion: omitted from semantic codebase search; still reachable via @file.
+# Cursor already excludes .gitignore and .cursorignore paths from indexing.
+# Scope: tracked, low-search-value paths only — do not duplicate build/cache here.
+
+# IDE workspace and local launcher scripts (tracked; rarely needed in search)
+.vscode/
+.tools/
+
+# 3D / audio / font assets (future; noisy in code search)
+**/*.glb
+**/*.gltf
+**/*.fbx
+**/*.blend
