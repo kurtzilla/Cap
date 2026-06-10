@@ -31,5 +31,6 @@
   },
   "[plaintext]": {
     "editor.formatOnSave": false
-  }
+  },
+  "workbench.editor.openPositioning": "last"
 }

@@ -36,7 +36,14 @@ public partial class GodotTickDriver : Node
         _simulationClock.OnTickBroadcast -= DispatchTickables;
     }
 
-    public SimulationMachineHandle CreateMachine(string recipeId)
+    public SimulationMachineHandle CreateMachine(string recipeId) =>
+        CreateMachineInternal(recipeId);
+
+    // Explicit snake_case entry point for GDScript interop.
+    public SimulationMachineHandle create_machine(string recipeId) =>
+        CreateMachineInternal(recipeId);
+
+    private SimulationMachineHandle CreateMachineInternal(string recipeId)
     {
         var machine = new SimulationMachine
         {

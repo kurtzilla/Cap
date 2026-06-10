@@ -9,14 +9,14 @@ var machine: SimulationMachineHandle
 
 
 func _process(delta: float) -> void:
-	if machine == null:
-		return
-
 	if status_label:
-		status_label.text = (
-			"State: [%s] - Progress: %.0f%%"
-			% [machine.state_label, machine.processing_progress_percent]
-		)
+		if machine == null:
+			status_label.text = "State: [Waiting] - Progress: 0%"
+		else:
+			status_label.text = (
+				"State: [%s] - Progress: %.0f%%"
+				% [machine.state_label, machine.processing_progress_percent]
+			)
 
-	if machine.is_running and work_mesh:
+	if machine != null and machine.is_running and work_mesh:
 		work_mesh.rotation_degrees.y += rotation_speed_degrees_per_second * delta
