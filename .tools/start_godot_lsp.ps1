@@ -27,6 +27,44 @@ function Test-LspProcess {
         Select-Object -First 1)
 }
 
+function Test-LspTcpReady {
+    $client = New-Object System.Net.Sockets.TcpClient
+    try {
+        $async = $client.BeginConnect("127.0.0.1", $Port, $null, $null)
+        $ready = $async.AsyncWaitHandle.WaitOne(500)
+        if (-not $ready) {
+            return $false
+        }
+        $client.EndConnect($async)
+        return $true
+    }
+    catch {
+        return $false
+    }
+    finally {
+        $client.Close()
+    }
+}
+
+function Wait-LspReady {
+    param([int]$ProcessId)
+
+    $deadline = (Get-Date).AddSeconds(45)
+    while ((Get-Date) -lt $deadline) {
+        if (Test-LspProcess -ProcessId $ProcessId) {
+            if (Test-LspTcpReady) {
+                Start-Sleep -Milliseconds 500
+                if (Test-LspTcpReady) {
+                    return $true
+                }
+            }
+        }
+        Start-Sleep -Milliseconds 250
+    }
+
+    return $false
+}
+
 if (Test-Path -LiteralPath $pidFile) {
     $existingPid = [int](Get-Content -LiteralPath $pidFile -Raw).Trim()
     if (Test-LspProcess -ProcessId $existingPid) {
@@ -50,13 +88,9 @@ $proc = Start-Process -FilePath $godot `
 
 Set-Content -LiteralPath $pidFile -Value $proc.Id -NoNewline
 
-$deadline = (Get-Date).AddSeconds(15)
-while ((Get-Date) -lt $deadline) {
-    if (Test-LspProcess -ProcessId $proc.Id) {
-        Write-Host "[Launch] Godot LSP ready (pid $($proc.Id))."
-        return $proc.Id
-    }
-    Start-Sleep -Milliseconds 250
+if (Wait-LspReady -ProcessId $proc.Id) {
+    Write-Host "[Launch] Godot LSP ready (pid $($proc.Id))."
+    return $proc.Id
 }
 
-Write-Error "Godot LSP failed to bind port $Port within 15 seconds."
+Write-Error "Godot LSP failed to bind port $Port within 45 seconds."

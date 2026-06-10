@@ -1,0 +1,9 @@
+---
+description: Global agent discipline and workspace boundaries for Cap
+alwaysApply: true
+---
+# Cap - Agent Discipline & Scope
+
+- **Scope:** Repo is `D:\source\Cap` only. Build/cache/archived paths are excluded via ignores.
+- **Discipline:** One task per message. If multiple are given, do the first only.
+- **Scans:** Prefer 1–3 named files over broad repo scans. For long/shifted threads, suggest `.cursor/commands/handoff.md`.

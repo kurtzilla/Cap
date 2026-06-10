@@ -1,0 +1,19 @@
+---
+description: Godot 4 presentation layer and GDScript styling rules
+globs:
+  - "src/Godot/**/*"
+  - "!src/Godot/CoreBridge/**"
+alwaysApply: false
+---
+# Cap - Godot & GDScript Presentation
+
+## Architecture
+- `src/Godot/`: **GDScript** (`.gd`/`.tscn`) for presentation — input, scenes, 3D transforms, meshes, and UI.
+- Presentation-only in `.gd`; simulation logic stays in Core or CoreBridge `RefCounted` handles.
+
+## Godot & GDScript Rules
+- Godot 4; static types on GDScript vars, params, and returns.
+- Scene wiring: `@export`, `@onready`; use `@tool` only when editor behavior is needed.
+- Signals: `.connect(callable)` — avoid string-based signal names.
+- **3D rendering discipline**: reuse/pool visualizer nodes; avoid spawning a new node per item/tick; batch mesh updates where possible.
+- Style: snake_case functions/variables; PascalCase `class_name`.

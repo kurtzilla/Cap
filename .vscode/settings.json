@@ -4,6 +4,9 @@
   "cap.godotProcessName": "Godot_v4.6.3-stable_mono_win64",
   "godotTools.lsp.serverPort": 6007,
   "godotTools.lsp.serverHost": "127.0.0.1",
+  "godotTools.lsp.autoReconnect.enabled": true,
+  "godotTools.lsp.autoReconnect.attempts": 25,
+  "godotTools.lsp.autoReconnect.cooldown": 2000,
   "task.allowAutomaticTasks": "on",
 
   "editor.formatOnSave": true,

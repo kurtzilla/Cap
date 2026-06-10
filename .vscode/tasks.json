@@ -21,7 +21,28 @@
       }
     },
     {
+      "label": "start-godot-lsp",
+      "type": "process",
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/.tools/start_godot_lsp.ps1"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        "close": true
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
       "label": "godot-lsp-watch",
+      "dependsOn": ["start-godot-lsp"],
       "type": "process",
       "command": "powershell.exe",
       "args": [

@@ -1,0 +1,22 @@
+---
+description: Pure C# Core simulation architecture and styling rules
+globs: "src/Core/**/*, src/Godot/CoreBridge/**/*"
+alwaysApply: false
+---
+# Cap - Core & C# Architecture
+
+## Architecture
+- `src/Core/`: pure C# (.NET 8), zero Godot — no `using Godot;`, no Node/Resource inheritance, no Godot math.
+- `src/Godot/CoreBridge/`: ONLY Godot-side C# — autoloads (`GodotTickDriver`) and `[GlobalClass]` handles (`SimulationMachineHandle`) so GDScript can drive Core without referencing Core assemblies directly.
+- Core runs factory simulation state; Godot interprets and renders it.
+- **Grid positions**: simple integer structures (X, Y, Z) in Core for simulation indexing — no float drift.
+
+## Core Mechanics
+- Fixed tick loop via `SimulationClock` + `ITickable`; Godot frame delta accumulates into ticks in `GodotTickDriver`.
+- Entities, recipes, and items live under `src/Core/Data/` and `src/Core/Simulation/`.
+- No background world-gen queues, `ArrayPool` chunk tiles, or noise unless explicitly requested.
+
+## C# Style
+- File-scoped namespaces; primary constructors / records where they fit.
+- PascalCase types/methods/properties; camelCase arguments/locals; `_camelCase` private fields.
+- Node retrieval: use `[Export]` for structural scene wiring instead of loose string-path `GetNode()` calls.

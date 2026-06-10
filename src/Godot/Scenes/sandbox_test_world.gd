@@ -4,7 +4,7 @@ extends Node3D
 func _ready() -> void:
 	_setup_scene_lighting()
 
-	var machine := GodotTickDriver.create_machine("SmeltIron")
+	var machine: SimulationMachineHandle = GodotTickDriver.create_machine("SmeltIron")
 	machine.try_inject_input("IronOre", 50)
 
 	var visualizer := _build_machine_visualizer(machine)

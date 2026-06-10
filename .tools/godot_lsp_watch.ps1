@@ -1,4 +1,4 @@
-# Watch Cursor/VS Code and stop the Godot LSP when the editor exits.
+# Track Cursor/VS Code session for LSP tooling. LSP is left running between editor sessions.
 param(
     [int]$EditorPid = 0
 )
@@ -13,7 +13,7 @@ if ($EditorPid -le 0 -and $env:VSCODE_PID -match '^\d+$') {
 }
 
 if ($EditorPid -le 0) {
-    Write-Warning "[LSP Watch] Editor PID not available; Godot LSP will not auto-stop on close."
+    Write-Warning "[LSP Watch] Editor PID not available; watch task exiting."
     exit 0
 }
 
@@ -27,12 +27,11 @@ if (Test-Path -LiteralPath $watchPidFile) {
 Set-Content -LiteralPath $watchPidFile -Value $PID -NoNewline
 
 try {
-    Write-Host "[LSP Watch] Godot LSP will stop when Cursor closes (pid $EditorPid)."
+    Write-Host "[LSP Watch] Godot LSP will stay running after Cursor closes (pid $EditorPid)."
     while (Get-Process -Id $EditorPid -ErrorAction SilentlyContinue) {
         Start-Sleep -Seconds 2
     }
 }
 finally {
-    & (Join-Path $PSScriptRoot "stop_godot_lsp.ps1")
     Remove-Item -LiteralPath $watchPidFile -Force -ErrorAction SilentlyContinue
 }
