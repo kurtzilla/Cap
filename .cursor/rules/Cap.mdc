@@ -14,7 +14,6 @@ alwaysApply: true
 
 - One task per message; if multiple are given, do the first only.
 - Prefer 1–3 named files over broad repo scans; long or shifted threads → suggest `.cursor/commands/handoff.md`.
-- Plans (when using Plan mode): `.cursor/plans/`; cite by path; one plan per phase. Skip `.archived/` if present.
 
 ## Architecture
 

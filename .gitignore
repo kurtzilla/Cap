@@ -28,9 +28,6 @@ mono_crash.*.json
 # Ephemeral runtime state (LSP / debug launchers)
 *.pid
 
-# Cursor plans (archived only; active plans stay tracked if added)
-.cursor/plans/.archived/
-
 # OS
 .DS_Store
 Thumbs.db
